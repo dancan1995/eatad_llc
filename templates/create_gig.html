@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Gig - Eätad</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f7f7f7; text-align: center; }
+        .container { max-width: 400px; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 50px; }
+        input, select, textarea, button { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { background: #28a745; color: white; border: none; cursor: pointer; }
+        button:hover { background: #218838; }
+        a { color: #28a745; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create a Gig</h2>
+        <form method="POST" action="/create_gig" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Gig Title" required>
+            <textarea name="description" placeholder="Describe your service..." required></textarea>
+            <input type="number" name="price" placeholder="Price ($)" required>
+            <label for="category">Choose Category:</label>
+            <select name="category" required>
+                <option value="writing">Writing & Translation</option>
+                <option value="design">Graphics & Design</option>
+                <option value="programming">Programming & Tech</option>
+                <option value="music">Music & Audio</option>
+            </select>
+            <label>Upload Gig Image:</label>
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Create Gig</button>
+        </form>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

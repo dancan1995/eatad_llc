@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Eätad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #28a745;
+            position: fixed;
+            padding-top: 20px;
+            color: white;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .sidebar a:hover {
+            background-color: #218838;
+        }
+
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+
+        .card {
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .chat-container {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        .chat-message {
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 10px;
+            max-width: 75%;
+        }
+
+        .chat-message.sent {
+            background-color: #28a745;
+            color: white;
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .chat-message.received {
+            background-color: #ddd;
+            text-align: left;
+        }
+
+        .withdraw-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h3 class="text-center">Eätad</h3>
+        <a href="#dashboard"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="#chats"><i class="fas fa-comments"></i> Messages</a>
+        <a href="#gigs"><i class="fas fa-briefcase"></i> My Gigs</a>
+        <a href="#earnings"><i class="fas fa-dollar-sign"></i> Earnings</a>
+        <a href="#withdraw"><i class="fas fa-wallet"></i> Withdraw</a>
+        <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Dashboard Section -->
+        <div id="dashboard">
+            <h2>Welcome to Your Dashboard</h2>
+            <p>Manage your gigs, messages, and earnings all in one place.</p>
+        </div>
+
+        <hr>
+
+        <!-- Chat Section -->
+        <div id="chats">
+            <h3>Messages</h3>
+            <div class="chat-container" id="chat-box">
+                <div class="chat-message received">Hi, I'm interested in your service!</div>
+                <div class="chat-message sent">Great! How can I assist you?</div>
+            </div>
+            <input type="text" id="chat-input" class="form-control mt-2" placeholder="Type a message...">
+            <button class="btn btn-success w-100 mt-2" onclick="sendMessage()">Send</button>
+        </div>
+
+        <hr>
+
+        <!-- My Gigs Section -->
+        <div id="gigs">
+            <h3>My Gigs</h3>
+            <button class="btn btn-success mb-3" onclick="createGig()">Create New Gig</button>
+            <div class="row" id="gig-list">
+                <!-- Sample Gigs -->
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <h5>Web Development</h5>
+                        <p>Starting at $50</p>
+                        <button class="btn btn-primary w-100">Edit Gig</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Earnings Section -->
+        <div id="earnings">
+            <h3>Earnings</h3>
+            <p>Total Balance: <strong>$500</strong></p>
+        </div>
+
+        <hr>
+
+        <!-- Withdraw Section -->
+        <div id="withdraw">
+            <h3>Withdraw Funds</h3>
+            <div class="withdraw-section">
+                <p>Available Balance: <strong>$500</strong></p>
+                <button class="btn btn-success" onclick="withdrawFunds()">Withdraw Now</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function sendMessage() {
+            let input = document.getElementById("chat-input").value;
+            if (input.trim() !== "") {
+                let chatBox = document.getElementById("chat-box");
+                let newMessage = document.createElement("div");
+                newMessage.className = "chat-message sent";
+                newMessage.innerText = input;
+                chatBox.appendChild(newMessage);
+                document.getElementById("chat-input").value = "";
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+
+        function createGig() {
+            alert("Gig creation functionality will be added soon.");
+        }
+
+        function withdrawFunds() {
+            alert("Withdrawal functionality will be implemented in the backend.");
+        }
+    </script>
+
+</body>
+</html>
